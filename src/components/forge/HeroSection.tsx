@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ArrowRight from './icons/ArrowRight';
 import smoothScrollTo from '../../lib/smoothScroll';
 
 export const HeroSection: React.FC = () => {
+  // Temporary click indicator: turns orange on click, then smoothly returns to original color
+  const [clickedBtn, setClickedBtn] = useState<string | null>(null);
+
+  const handleBtnClick = (name: string) => {
+    setClickedBtn(name);
+    setTimeout(() => {
+      setClickedBtn(null);
+    }, 550);
+  };
+
   const handleStageClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     targetSelector: string
@@ -57,19 +67,21 @@ export const HeroSection: React.FC = () => {
           </p>
           <div className="hero__actions">
             <a
-              className="btn btn--light"
+              className={`btn btn--light ${clickedBtn === 'discovery' ? 'is-clicked' : ''}`}
               href="https://www.iuovadesign.com/contact"
+              onClick={() => handleBtnClick('discovery')}
             >
-              Book a discovery call
+              <span>Book a discovery call</span>
               <ArrowRight />
             </a>
             <a
-              className="btn btn--ghost-dark"
+              className={`btn btn--ghost-dark ${clickedBtn === 'portfolio' ? 'is-clicked' : ''}`}
               href="/portfolio.pdf"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => handleBtnClick('portfolio')}
             >
-              Download the Portfolio
+              <span>Download the Portfolio</span>
             </a>
           </div>
           <div

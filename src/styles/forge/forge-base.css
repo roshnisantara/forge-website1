@@ -67,12 +67,26 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+a:not(.btn):not(.btn-iuova):hover {
   color: var(--amber-ink);
 }
 
-.on-dark a:hover {
+.on-dark a:not(.btn):not(.btn-iuova):hover {
   color: var(--amber);
+}
+
+/* Guarantee that buttons always keep their designed text color */
+.btn--light,
+.btn--light *,
+.btn-iuova,
+.btn-iuova * {
+  color: #000000 !important;
+}
+
+.on-dark .btn--light,
+.on-dark .btn--light:hover,
+.on-dark .btn--light * {
+  color: #000000 !important;
 }
 
 button {

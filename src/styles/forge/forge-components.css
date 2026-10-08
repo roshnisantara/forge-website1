@@ -13,13 +13,63 @@
 }
 
 .btn:hover {
-  opacity: .85;
-  color: inherit;
+  opacity: 1;
 }
 
 .btn--light {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   background: var(--white);
-  color: var(--ink);
+  border: 1px solid var(--white);
+  color: #000000 !important;
+  transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, transform 0.1s ease;
+  user-select: none;
+}
+
+.btn--light,
+.btn--light:hover,
+.btn--light:focus,
+.btn--light:active,
+.btn--light.is-clicked {
+  color: #000000 !important;
+}
+
+.btn--light > *,
+.btn--light span,
+.btn--light svg,
+.btn--light svg path {
+  position: relative;
+  z-index: 2 !important;
+  color: #000000 !important;
+  stroke: #000000 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.btn--light::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #F5B301;
+  transform: translateX(-100%);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.btn--light:hover::before {
+  transform: translateX(0);
+}
+
+.btn--light:hover {
+  color: #000000 !important;
+  border-color: #F5B301;
+}
+
+.btn--light:active {
+  transform: scale(0.97);
 }
 
 .btn--pill-dark {
@@ -38,8 +88,58 @@
 }
 
 .btn--ghost-dark {
-  border-color: rgba(244, 245, 247, .35);
-  color: var(--on-dark);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(244, 245, 247, .35);
+  background: transparent;
+  color: #ffffff !important;
+  transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, transform 0.1s ease;
+  user-select: none;
+}
+
+.btn--ghost-dark > *,
+.btn--ghost-dark span,
+.btn--ghost-dark svg {
+  position: relative;
+  z-index: 2 !important;
+  color: #ffffff;
+  stroke: #ffffff;
+  transition: color 0.3s ease, stroke 0.3s ease;
+}
+
+.btn--ghost-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #F5B301;
+  transform: translateX(-100%);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.btn--ghost-dark:hover::before {
+  transform: translateX(0);
+}
+
+.btn--ghost-dark:hover,
+.btn--ghost-dark:active,
+.btn--ghost-dark.is-clicked {
+  border-color: #F5B301;
+  color: #000000 !important;
+}
+
+.btn--ghost-dark:hover > *,
+.btn--ghost-dark:active > *,
+.btn--ghost-dark.is-clicked > * {
+  color: #000000 !important;
+  stroke: #000000 !important;
+}
+
+.btn--ghost-dark:active {
+  transform: scale(0.97);
 }
 
 .btn--ghost-light {
@@ -149,7 +249,121 @@
 
 .header__cta {
   display: flex;
+  align-items: center;
   gap: 12px;
+}
+
+/* ---------- IUOVA BUTTONS (Portfolio & Let's Talk CTA) ------------------- */
+.btn-iuova {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  height: 40px;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #ffffff;
+  color: #000000 !important;
+  transition: background-color 0.35s ease, border-color 0.35s ease, transform 0.1s ease;
+  user-select: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.btn-iuova:active {
+  transform: scale(0.97);
+}
+
+/* Sliding orange wave on hover (matching iuovadesign.com) */
+.btn-iuova::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #F5B301;
+  transform: translateX(-100%);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 9999px;
+  pointer-events: none;
+}
+
+.btn-iuova:hover::before {
+  transform: translateX(0);
+}
+
+.btn-iuova:hover {
+  border-color: #F5B301;
+  color: #000000 !important;
+}
+
+.btn-iuova,
+.btn-iuova:hover,
+.btn-iuova:focus,
+.btn-iuova:active,
+.btn-iuova.is-clicked {
+  color: #000000 !important;
+}
+
+.btn-iuova__text,
+.btn-iuova > *,
+.btn-iuova span {
+  position: relative;
+  z-index: 2 !important;
+  color: #000000 !important;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Click animation: turns orange on click, then smoothly returns to original color */
+.btn-iuova.is-clicked,
+.btn--light.is-clicked,
+.btn--ghost-dark.is-clicked {
+  animation: iuovaOrangeClick 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.btn-iuova.is-clicked::before,
+.btn--light.is-clicked::before,
+.btn--ghost-dark.is-clicked::before {
+  transform: translateX(0);
+  animation: iuovaOrangeFillFlash 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes iuovaOrangeFillFlash {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+}
+
+@keyframes iuovaOrangeClick {
+  0% {
+    border-color: #F5B301;
+    color: #000000;
+  }
+  60% {
+    border-color: #F5B301;
+    color: #000000;
+  }
+  100% {
+    /* smoothly returns to original styling */
+  }
 }
 
 /* ---------- HERO -------------------------------------------------------- */
@@ -710,19 +924,27 @@
   align-items: center;
   gap: 24px;
   cursor: pointer;
-  padding: 6px 12px;
-  margin: 0 -12px;
-  border-radius: 4px;
-  transition: background 0.2s ease, outline-color 0.2s ease;
+  padding: 8px 14px;
+  margin: 0 -14px;
+  border-radius: 6px;
+  transition: background 0.25s ease, outline-color 0.25s ease, transform 0.1s ease;
+}
+
+.gantt__row:active {
+  transform: scale(0.995);
 }
 
 .gantt__row:hover {
-  background: rgba(244, 245, 247, 0.05);
+  background: rgba(245, 179, 1, 0.08);
 }
 
 .gantt__row.is-selected {
-  background: rgba(245, 179, 1, 0.12);
-  outline: 1px solid rgba(245, 179, 1, 0.45);
+  background: rgba(245, 179, 1, 0.16);
+  outline: 1.5px solid var(--amber);
+}
+
+.gantt__row.is-selected .gantt__bar {
+  filter: brightness(1.12) drop-shadow(0 0 12px rgba(245, 179, 1, 0.45));
 }
 
 .gantt__label {
