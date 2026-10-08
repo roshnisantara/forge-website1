@@ -726,32 +726,39 @@
 }
 
 .gantt__label {
-  font: 600 16px var(--font-sans);
+  font: 500 15px/1.4 var(--font-sans);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
 }
 
 .gantt__label b {
+  font-family: var(--font-display);
+  font-weight: 700;
   color: var(--amber);
-  margin-right: 10px;
+  margin-right: 12px;
+  font-size: 16px;
 }
 
 .gantt__track {
   position: relative;
-  height: 36px;
+  height: 38px;
   background: rgba(244, 245, 247, .06);
+  border-radius: 3px;
 }
 
 .gantt__bar {
   position: absolute;
   inset-block: 0;
   background: #F5B301;
-  border-radius: 2px;
+  border-radius: 3px;
   display: flex;
   align-items: center;
   padding-left: 10px;
-  font: 600 10px var(--font-label);
+  font: 600 11px var(--font-label);
   white-space: nowrap;
   color: var(--ink-deep);
-  transition: background .45s ease, color .45s ease, filter .2s ease;
+  transition: background .35s ease, color .35s ease, filter .2s ease;
 }
 
 .gantt__row:hover .gantt__bar {
@@ -830,15 +837,15 @@
   display: grid;
   grid-template-columns: 190px minmax(0, 1fr);
   gap: 24px;
-  margin-top: 6px;
+  margin-top: 10px;
 }
 
 .gantt__ruler ul {
   display: flex;
   justify-content: space-between;
-  font: 500 10px var(--font-label);
-  letter-spacing: .12em;
-  color: rgba(244, 245, 247, .4);
+  font: 500 11px var(--font-label);
+  letter-spacing: .14em;
+  color: rgba(244, 245, 247, .5);
 }
 
 .gantt__details-anchor {
@@ -999,6 +1006,12 @@
   text-decoration: underline;
 }
 
+.turnaround-chart-wrap {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1008,21 +1021,47 @@
   border-top: 1px solid rgba(244, 245, 247, .14);
 }
 
+.stats--center {
+  width: 100%;
+  max-width: 980px;
+  margin: 64px auto 0;
+  padding-top: 48px;
+  border-top: 1px solid rgba(244, 245, 247, .12);
+  text-align: center;
+}
+
 .stats dt {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(38px, 4.2vw, 54px);
+  font-size: clamp(38px, 4.4vw, 56px);
   line-height: 1;
-  letter-spacing: 0.01em;
+  letter-spacing: -0.02em;
   color: #ffffff;
+}
+
+.stats--center dt {
+  text-align: center;
 }
 
 .stats dd {
   margin: 14px 0 0;
-  font: 500 11px/1.5 var(--font-label);
+  font: 500 11.5px/1.5 var(--font-label);
   letter-spacing: .18em;
   text-transform: uppercase;
   color: rgba(244, 245, 247, .55);
+}
+
+.stats--center dd {
+  margin: 14px auto 0;
+  text-align: center;
+  color: rgba(244, 245, 247, .6);
+}
+
+.stats--center .stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 /* ---------- CLIENTS ---------------------------------------------------- */

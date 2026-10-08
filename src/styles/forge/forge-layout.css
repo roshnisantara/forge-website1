@@ -14,13 +14,58 @@
   display: grid;
   grid-template-columns: var(--col) minmax(0, 1fr);
   gap: 52px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* Centered Turnaround Section Showcase */
+.sec--turnaround {
+  padding: 100px var(--pad);
+}
+
+.turnaround-container {
+  max-width: 1040px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.turnaround-header {
+  text-align: center;
+  max-width: 740px;
+  margin: 0 auto 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .marker {
-  font: 600 11px/1.7 var(--font-label);
-  letter-spacing: .18em;
+  font: 600 11.5px/1.7 var(--font-label);
+  letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--muted-2);
+}
+
+.marker--center {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(245, 179, 1, 0.08);
+  border: 1px solid rgba(245, 179, 1, 0.25);
+  color: var(--amber);
+  font: 600 11.5px/1 var(--font-label);
+  letter-spacing: .22em;
+}
+
+.marker__divider {
+  opacity: 0.4;
+  font-weight: 400;
 }
 
 .marker--stage {
@@ -28,7 +73,11 @@
 }
 
 .sec--dark .marker {
-  color: rgba(244, 245, 247, .45);
+  color: rgba(255, 255, 255, .5);
+}
+
+.sec--dark .marker--center {
+  color: var(--amber);
 }
 
 .eyebrow {
@@ -73,9 +122,23 @@
   max-width: 640px;
 }
 
+.turnaround-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(32px, 4.4vw, 54px);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--white);
+  text-align: center;
+  margin: 0 auto 16px;
+}
+
 .turnaround-lede {
-  margin: 12px 0 42px;
-  max-width: 640px;
+  margin: 0 auto 48px;
+  max-width: 680px;
+  text-align: center;
+  font: 400 clamp(16px, 1.25vw, 18px)/1.65 var(--font-sans);
+  color: rgba(255, 255, 255, .72);
 }
 
 .deliverables-lede {
